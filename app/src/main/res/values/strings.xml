@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Compose</string>
+    
+    <string name="press_twice_to_exit">Нажмите дважды для выхода</string>
+
+    <!-- Bottom Navigation -->
+    <string name="bottom_nav_tab_main">Главная</string>
+    <string name="bottom_nav_tab_responses">Отлкики</string>
+    <string name="bottom_nav_tab_profile">Профиль</string>
+
+    <!--  Toolbar's -->
+    <string name="toolbar_title_home">Главная</string>
+    <string name="toolbar_title_profile">Профиль</string>
+    <string name="toolbar_title_responses">Отклики</string>
 </resources>

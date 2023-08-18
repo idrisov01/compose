@@ -1,47 +1,34 @@
 package com.idrisov.compose
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.idrisov.compose.ui.theme.ComposeTheme
+import androidx.navigation.compose.rememberNavController
+import com.idrisov.compose.presentations.flow.BottomNavigation
+import com.idrisov.compose.presentations.flow.NavigationGraph
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+            MainScreenView()
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeTheme {
-        Greeting("Android")
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+    @Composable
+    fun MainScreenView() {
+        val navController = rememberNavController()
+        Scaffold(
+            bottomBar = { BottomNavigation(navController = navController) }
+        ) {
+            NavigationGraph(navController = navController)
+        }
     }
 }
